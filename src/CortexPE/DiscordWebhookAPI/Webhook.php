@@ -32,12 +32,10 @@ use CortexPE\DiscordWebhookAPI\task\DiscordWebhookSendTask;
 use pocketmine\Server;
 
 class Webhook {
-	/** @var string */
-	protected $url;
 
-	public function __construct(string $url){
-		$this->url = $url;
-	}
+	public function __construct(protected string $url){
+        // NOOP
+    }
 
 	public function getURL(): string{
 		return $this->url;

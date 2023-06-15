@@ -28,9 +28,11 @@ declare(strict_types = 1);
 
 namespace CortexPE\DiscordWebhookAPI;
 
+use DateTime;
+use DateTimeZone;
+
 class Embed {
-	/** @var array */
-	protected $data = [];
+	protected array $data = [];
 
 	public function asArray(): array{
 		// Why doesn't PHP have a `__toArray()` magic method??? This would've been better.
@@ -97,8 +99,8 @@ class Embed {
 		}
 	}
 
-	public function setTimestamp(\DateTime $timestamp):void{
-		$timestamp->setTimezone(new \DateTimeZone("UTC"));
+	public function setTimestamp(DateTime $timestamp):void{
+		$timestamp->setTimezone(new DateTimeZone("UTC"));
 		$this->data["timestamp"] = $timestamp->format("Y-m-d\TH:i:s.v\Z");
 	}
 }
