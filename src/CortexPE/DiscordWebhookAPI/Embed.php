@@ -28,16 +28,25 @@ declare(strict_types = 1);
 
 namespace CortexPE\DiscordWebhookAPI;
 
-class Embed {
-	/** @var array */
-	protected $data = [];
+class Embed{
+	/** @var array $data */
+	protected array $data = [];
 
+	/**
+	 * @return array
+	 */
 	public function asArray(): array{
 		// Why doesn't PHP have a `__toArray()` magic method??? This would've been better.
 		return $this->data;
 	}
 
-	public function setAuthor(string $name, string $url = null, string $iconURL = null):void{
+	/**
+	 * @param string $name
+	 * @param string|null $url
+	 * @param string|null $iconURL
+	 * @return void
+	 */
+	public function setAuthor(string $name, string $url = null, string $iconURL = null): void{
 		if(!isset($this->data["author"])){
 			$this->data["author"] = [];
 		}
@@ -50,19 +59,37 @@ class Embed {
 		}
 	}
 
-	public function setTitle(string $title):void{
+	/**
+	 * @param string $title
+	 * @return void
+	 */
+	public function setTitle(string $title): void{
 		$this->data["title"] = $title;
 	}
 
-	public function setDescription(string $description):void{
+	/**
+	 * @param string $description
+	 * @return void
+	 */
+	public function setDescription(string $description): void{
 		$this->data["description"] = $description;
 	}
 
-	public function setColor(int $color):void{
+	/**
+	 * @param integer $color
+	 * @return void
+	 */
+	public function setColor(int $color): void{
 		$this->data["color"] = $color;
 	}
 
-	public function addField(string $name, string $value, bool $inline = false):void{
+	/**
+	 * @param string $name
+	 * @param string $value
+	 * @param boolean $inline
+	 * @return void
+	 */
+	public function addField(string $name, string $value, bool $inline = false): void{
 		if(!isset($this->data["fields"])){
 			$this->data["fields"] = [];
 		}
@@ -73,13 +100,21 @@ class Embed {
 		];
 	}
 
-	public function setThumbnail(string $url):void{
+	/**
+	 * @param string $url
+	 * @return void
+	 */
+	public function setThumbnail(string $url): void{
 		if(!isset($this->data["thumbnail"])){
 			$this->data["thumbnail"] = [];
 		}
 		$this->data["thumbnail"]["url"] = $url;
 	}
 
+	/**
+	 * @param string $url
+	 * @return void
+	 */
 	public function setImage(string $url):void{
 		if(!isset($this->data["image"])){
 			$this->data["image"] = [];
@@ -87,7 +122,12 @@ class Embed {
 		$this->data["image"]["url"] = $url;
 	}
 
-	public function setFooter(string $text, string $iconURL = null):void{
+	/**
+	 * @param string $text
+	 * @param string|null $iconURL
+	 * @return void
+	 */
+	public function setFooter(string $text, string $iconURL = null): void{
 		if(!isset($this->data["footer"])){
 			$this->data["footer"] = [];
 		}
@@ -97,7 +137,11 @@ class Embed {
 		}
 	}
 
-	public function setTimestamp(\DateTime $timestamp):void{
+	/**
+	 * @param \DateTime $timestamp
+	 * @return void
+	 */
+	public function setTimestamp(\DateTime $timestamp): void{
 		$timestamp->setTimezone(new \DateTimeZone("UTC"));
 		$this->data["timestamp"] = $timestamp->format("Y-m-d\TH:i:s.v\Z");
 	}
