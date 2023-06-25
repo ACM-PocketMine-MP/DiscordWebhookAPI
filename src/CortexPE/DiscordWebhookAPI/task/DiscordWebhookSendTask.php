@@ -46,23 +46,24 @@ use function in_array;
 use function json_encode;
 
 class DiscordWebhookSendTask extends AsyncTask{
+
     /** @var NonThreadSafeValue $webhook */
     protected NonThreadSafeValue $webhook;
     /** @var NonThreadSafeValue $message */
     protected NonThreadSafeValue $message;
     
     /**
-	    * @param Webhook $webhook
-	    * @param Message $message
-	    */
+     * @param Webhook $webhook
+     * @param Message $message
+     */
     public function __construct(Webhook $webhook, Message $message){
         $this->webhook = new NonThreadSafeValue($webhook);
         $this->message = new NonThreadSafeValue($message);
     }
 
     /**
-	    * @return void
-	    */
+     * @return void
+     */
     public function onRun(): void{
         $ch = curl_init($this->webhook->deserialize()->getURL());
         curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($this->message->deserialize()));
@@ -76,8 +77,8 @@ class DiscordWebhookSendTask extends AsyncTask{
     }
 
     /**
-	    * @return void
-	    */
+     * @return void
+     */
     public function onCompletion(): void{
         $response = $this->getResult();
         if(!in_array($response[1], [200, 204])){

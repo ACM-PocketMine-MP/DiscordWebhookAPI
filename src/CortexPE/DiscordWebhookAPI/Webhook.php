@@ -28,10 +28,12 @@ declare(strict_types = 1);
 
 namespace CortexPE\DiscordWebhookAPI;
 
-use CortexPE\DiscordWebhookAPI\task\DiscordWebhookSendTask;
 use pocketmine\Server;
 
+use CortexPE\DiscordWebhookAPI\task\DiscordWebhookSendTask;
+
 class Webhook{
+	
 	/** @var string $url */
 	protected string $url;
 
