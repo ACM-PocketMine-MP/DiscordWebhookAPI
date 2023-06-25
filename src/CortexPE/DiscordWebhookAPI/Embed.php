@@ -28,7 +28,11 @@ declare(strict_types = 1);
 
 namespace CortexPE\DiscordWebhookAPI;
 
+use DateTime;
+use DateTimeZone;
+
 class Embed{
+  
 	/** @var array $data */
 	protected array $data = [];
 
@@ -136,13 +140,12 @@ class Embed{
 			$this->data["footer"]["icon_url"] = $iconURL;
 		}
 	}
-
+  
 	/**
 	 * @param \DateTime $timestamp
 	 * @return void
 	 */
-	public function setTimestamp(\DateTime $timestamp): void{
-		$timestamp->setTimezone(new \DateTimeZone("UTC"));
-		$this->data["timestamp"] = $timestamp->format("Y-m-d\TH:i:s.v\Z");
+	public function setTimestamp(DateTime $timestamp):void{
+		$timestamp->setTimezone(new DateTimeZone("UTC"));
 	}
 }

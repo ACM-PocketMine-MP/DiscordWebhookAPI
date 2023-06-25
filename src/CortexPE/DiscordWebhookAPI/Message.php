@@ -28,7 +28,9 @@ declare(strict_types = 1);
 
 namespace CortexPE\DiscordWebhookAPI;
 
-class Message implements \JsonSerializable{
+use JsonSerializable;
+
+class Message implements JsonSerializable{
 	/** @var array $data */
 	protected array $data = [];
 
