@@ -32,12 +32,11 @@ use pocketmine\Server;
 
 use pocketmine\scheduler\AsyncTask;
 
+use pocketmine\thread\NonThreadSafeValue;
+
 use CortexPE\DiscordWebhookAPI\Message;
 use CortexPE\DiscordWebhookAPI\Webhook;
 
-use pocketmine\scheduler\AsyncTask;
-use pocketmine\Server;
-use pocketmine\thread\NonThreadSafeValue;
 use function curl_close;
 use function curl_exec;
 use function curl_getinfo;

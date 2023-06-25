@@ -35,8 +35,11 @@ class Webhook{
 	/** @var string $url */
 	protected string $url;
 
-	public function __construct(protected string $url){
-        // NOOP
+	/**
+	 * @param string $url
+	 */
+	public function __construct(string $url){
+        $this->url = $url;
     }
 
 	/**

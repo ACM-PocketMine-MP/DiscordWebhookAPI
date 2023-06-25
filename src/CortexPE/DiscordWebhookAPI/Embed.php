@@ -142,7 +142,7 @@ class Embed{
 	}
   
 	/**
-	 * @param \DateTime $timestamp
+	 * @param DateTime $timestamp
 	 * @return void
 	 */
 	public function setTimestamp(DateTime $timestamp):void{
